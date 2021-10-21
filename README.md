@@ -3,11 +3,11 @@
 >
  ### 1. Map polyfil ###
  ##### Write emplementation of the map function #####
- [Look here]: <https://jsbin.com/makeririqo/edit?js,console>
+ <[Look here]: <https://jsbin.com/makeririqo/edit?js,console>
 
  ### 2. Map ###
  ##### Bring the array to such form : {id: …, title: …} #####
- [Look here]: <https://jsbin.com/cakahunagu/edit?js,console>
+ <[Look here]: <https://jsbin.com/cakahunagu/edit?js,console>
 
  ### 3. Filter polyfil ###
  ##### Write emplementation of the filter function #####
