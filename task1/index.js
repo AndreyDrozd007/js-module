@@ -1,4 +1,4 @@
-const notes = [
+const NOTES = [
     {
         id: 1,
         title: "Recipe",
@@ -35,81 +35,77 @@ const notes = [
 
 // MAP POLYFIL
 Array.prototype.myMap = function (callback) {
-    let result = []
+    let result = [];
     for (let i = 0; i < this.length; i++) {
-        result.push(callback(this[i], i, this))
+        result.push(callback(this[i], i, this));
     }
-    return result
+    return result;
 }
 
 
 // MAP
 Array.prototype.myMap = function (callback) {
-    let result = []
+    let result = [];
     for (let i = 0; i < this.length; i++) {
         result.push(callback(this[i], i, this))
     }
-    return result
+    return result;
 }
 
-let result = notes.myMap((item) => {
-    return item.id + ' ' + item.title
-})
-console.log(result);
+const updatedNotes  = NOTES.myMap((note) => `id: ${note.id}, title: ${note.title}`);
+console.log(updatedNotes);
 
 
 // FILTER POLYFIL
 Array.prototype.myFilter = function (callback) {
-    let result = []
+    let result = [];
     for (let i = 0; i < this.length; i++) {
        if(callback(this[i], i, this)) {
-            result.push(this[i])
+            result.push(this[i]);
        }
     }
-    return result
+    return result;
 }
 
 
 // FILTER
 Array.prototype.myFilter = function (callback) {
-    let result = []
+    let result = [];
     for (let i = 0; i < this.length; i++) {
        if(callback(this[i], i, this)) {
-            result.push(this[i])
+            result.push(this[i]);
        }
     }
-    return result
+    return result;
 }
 
-let result = notes.myFilter((item) => {
-    return item.isMarked === true 
-})
-console.log(result);
+const filteredNotes = NOTES.myFilter((note) => note.isMarked);
+console.log(filteredNotes);
 
 
 // REDUCE POLYFIL
 Array.prototype.myReduce = function (callback, initialValue) {
-    let accum = initialValue
+    let accum = initialValue;
     for (let i = 0; i < this.length; i++) {
         accum = callback(accum, this[i], i, this)
     } 
-    return accum
+    return accum;
 
 
 // REDUCE
 Array.prototype.myReduce = function (callback, initialValue) {
-    let accum = initialValue
+    let accum = initialValue;
     for (let i = 0; i < this.length; i++) {
         accum = callback(accum, this[i], i, this)
     } 
-    return accum
+    return accum;
 }
 
-console.log(notes.myReduce((accum, value ) => accum + value.pagesCount ,0));
+console.log(NOTES.myReduce((accum, value ) => accum + value.pagesCount ,0));
 
 
 // GET UNIQUE ELEMENT
-const testArray = [1,1,1,2,2,3,4,4,5,5,5,5]
+const testArray = [1,1,1,2,2,3,4,4,5,5,5,5];
 
 function getUniqueElement(value, index, self) {
     return self.filter(item => item === value).length === 1;
