@@ -6,7 +6,19 @@ console.log(`x=${this.x}, y=${y}`);
 }
 testThis(100);
 
-const boundFunction = testThis.bind(context);
+function bind(fn, context, ...rest) {
+    return function(...args) {
+        const uniqId = Date.now().toString();
+        
+        context[uniqId] = fn;
+
+        const result = context[uniqId](...rest.concat(args));
+        delete context[uniqId];
+        return result;
+    }   
+}
+
+const boundFunction = bind(testThis, context);
 console.log(boundFunction(100));
 
 // B. Bind, call, apply function / find and fix the error
