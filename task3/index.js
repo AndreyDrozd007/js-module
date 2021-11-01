@@ -27,11 +27,18 @@ const DOWNLOADS = [
     },
   ];
   
+  const DOWNLOAD_STATUSES = {
+    pending: 'Pending',
+    done: 'Done',
+    failed: 'Failed',
+  }
+  
   document.querySelector(
     ".content"
   ).innerHTML = `<table class='downloads__table'></table>`;
   const renderTable = () => {
-    document.querySelector(".downloads__table").innerHTML = "";
+    const downloadsTable = document.querySelector(".downloads__table")
+    downloadsTable.innerHTML = "";
     for (let i = 0; i < DOWNLOADS.length; i++) {
       const table = document.createElement("tr");
       table.innerHTML = `
@@ -39,43 +46,46 @@ const DOWNLOADS = [
       <td> title: ${DOWNLOADS[i].title}</td>
       <td class='td_status'> status: ${DOWNLOADS[i].status}</td>
       `;
-      document.querySelector(".downloads__table").appendChild(table);
+      downloadsTable.appendChild(table);
     }
   };
   
   renderTable();
   
   const button = document.querySelector(".btn_click");
+  const intervalLength = 5000;
+  const timeoutLength = 3000;
   
   function startInterval() {
     const interval = setInterval(() => {
       console.log('Check Started');
-      const element = DOWNLOADS.find((el) => el.status === 'Pending')
-      if(element){
-        element.status = 'Done'; 
+      const findElementStatus = DOWNLOADS.find((elementArray) => elementArray.status === DOWNLOAD_STATUSES.pending)
+      if(findElementStatus){
+        findElementStatus.status = DOWNLOAD_STATUSES.done; 
         renderTable();
       } else {
         clearInterval(interval);
       }
-    }, 5000);
+    }, intervalLength);
   }
          
   function handleClick() {
-    setTimeout(startInterval(), 3000);
+    setTimeout(startInterval(), timeoutLength);
   
   }
   button.addEventListener("click", handleClick);
   
 
-// Part B of task 3
-  const inputOne = document.querySelector('.input__one');
+//   Part B of task 3
+  const inputForType = document.querySelector('.form__input-for-type');
+  const timeoutAfterInput = 1000;
   
   function getContent(text){
-      const inputTwo = document.querySelector('.input__two');
+      const inputForShowing = document.querySelector('.form__input-for-showing');
       setTimeout(function() {
-          inputTwo.value = text.target.value;
-      },1000)
+        inputForShowing.value = text.target.value;
+      },timeoutAfterInput)
   }
   
-  const unputTimer = setTimeout(getContent, 1000);
-  inputOne.addEventListener('keyup', getContent);
+  const inputTimer = setTimeout(getContent, timeoutAfterInput);
+  inputForType.addEventListener('keyup', getContent);
