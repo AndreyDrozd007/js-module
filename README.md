@@ -1,19 +1,12 @@
-# TASK 2 #
+# TASK 3 #
 --- 
 >
- ### 1. Bind function. ###
- ##### Find and fix the error. Write a function that allows you to bind the context #####
- <[Look here]: <https://jsbin.com/heguxigule/edit?js,console>
+ ### 1. Timers and events. ###
+ ##### Create the button that changes the status of table elements after 3 seconds from a click every 5 second #####
+ <[Look here]: <https://jsbin.com/yupijitehe/edit?html,js,console>
 
- ### 2. Bind function. ###
- ##### Find and fix the error. Output the result to the console using bind  #####
- <[Look here]: <https://jsbin.com/cubenufuyi/edit?js,console>
+ ### 2. Timers and events. ###
+ ##### Create two input fields. When updating one field, the changes are repeated in the other field after a second when the user has stopped typing #####
+ <[Look here]: <https://jsbin.com/yomayojire/edit?html,js,console>
  
- ### 2. Call function. ###
- ##### Find and fix the error. Output the result to the console using call #####
- <[Look here]: <https://jsbin.com/neposamaqi/edit?js,console>
-
- ### 2. Apply function. ###
- ##### Find and fix the error. Output the result to the console using apply #####
- <[Look here]: <https://jsbin.com/rametibizo/edit?js,console>
  >
