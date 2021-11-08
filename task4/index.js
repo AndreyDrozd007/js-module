@@ -30,10 +30,11 @@ for (let d of makeDroids()) {
 
 const numberForTimer = Math.random() * 10;
 const timer = Math.trunc(numberForTimer) * 1000;
+const successInterval = 2000;
 
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    if (timer <= 2000) {
+    if (timer <= successInterval) {
       resolve(console.log("Done"));
     } else {
       reject(console.error("Error"));
@@ -52,8 +53,9 @@ class HttpError extends Error {
   }
 }
 async function loadJson(url) {
-  let response = await fetch(url);
-  if (response.status == 200) {
+  const response = await fetch(url);
+  const successStatus = 200;
+  if (response.status == successStatus) {
     return response.json();
   } else {
     throw new HttpError(response);
@@ -61,17 +63,15 @@ async function loadJson(url) {
 }
 
 async function demoGithubUser() {
-  let name;
-  let res;
-
+  const errorStatus = 404;
   while(true){
-    name = prompt("Login?", "iliakan");
+    const name = prompt("Login?", "iliakan");
     try {
-      res = await loadJson(`https://api.github.com/users/${name}`);
+      const res = await loadJson(`https://api.github.com/users/${name}`);
       alert(`Full name: ${res.name}.`);
       return res;
     } catch (err) {
-      if(err instanceof HttpError && err.response.status == 404) {
+      if(err instanceof HttpError && err.response.status == errorStatus) {
         alert("We can’t find such user.");
       } else {
         throw err;
